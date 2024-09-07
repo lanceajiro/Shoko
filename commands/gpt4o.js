@@ -2,7 +2,7 @@ const axios = require('axios');
 
 exports.config = {
     name: 'gpt4o',
-    author: 'Lance Cochangco',
+    author: 'Lance Ajiro',
     access: 'anyone',
     description: 'Interact with the GPT4O AI model.',
     category: 'AI',

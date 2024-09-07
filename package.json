@@ -1,0 +1,30 @@
+{
+  "name": "Shoko",
+  "version": "1.0.0",
+  "description": "Telegram Bot made by Lance Cochangco",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Telegram",
+    "Telegram Bot",
+    "Shoko Telegram Bot"
+  ],
+  "author": "Lance Cochangco",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "axios": "^1.7.3",
+    "child_process": "^1.0.2",
+    "cli-table3": "^0.6.5",
+    "express": "^4.19.2",
+    "figlet": "^1.7.0",
+    "fs-extra": "^11.2.0",
+    "gradient-string": "^2.0.2",
+    "moment-timezone": "^0.5.45",
+    "node-cron": "^3.0.3",
+    "node-telegram-bot-api": "^0.66.0",
+    "socket.io": "^4.7.5"
+  }
+}

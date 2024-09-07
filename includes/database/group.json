@@ -1,0 +1,27 @@
+{
+    "-1002211617788": {
+        "ai": false,
+        "bot": true,
+        "meme": false,
+        "event": true,
+        "onlyadmin": false,
+        "title": "Ajironian",
+        "type": "supergroup",
+        "description": "",
+        "memberCount": 10
+    },
+    "-1002177254398": {
+        "ai": false,
+        "bot": true,
+        "meme": false,
+        "event": true,
+        "onlyadmin": false
+    },
+    "-4187844018": {
+        "ai": false,
+        "bot": true,
+        "meme": false,
+        "event": true,
+        "onlyadmin": false
+    }
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoko Bot Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #10b981;
+            --background-color: #111827;
+            --card-background: #1f2937;
+            --text-color: #e5e7eb;
+            --muted-text-color: #9ca3af;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: -0.025em;
+        }
+
+        .date-time {
+            font-size: 0.875rem;
+            color: var(--muted-text-color);
+        }
+
+        .dashboard-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.025em;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: var(--muted-text-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card .value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--muted-text-color);
+            font-size: 0.875rem;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .date-time {
+                margin-top: 0.5rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Shoko</h1>
+            <div class="date-time" id="currentDateTime"></div>
+        </header>
+
+        <main>
+            <section class="dashboard-section">
+                <h2 class="section-title">Bot Information</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h2>Bot Name</h2>
+                        <div class="value loading" id="botName">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h2>Bot ID</h2>
+                        <div class="value loading" id="botId">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h2>Username</h2>
+                        <div class="value loading" id="botUsername">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h2>Owner</h2>
+                        <div class="value loading" id="botOwner">Loading...</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section">
+                <h2 class="section-title">Usage Statistics</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h2>Total Commands</h2>
+                        <div class="value loading" id="commandCount">0</div>
+                    </div>
+                    <div class="card">
+                        <h2>Total Users</h2>
+                        <div class="value loading" id="userCount">0</div>
+                    </div>
+                    <div class="card">
+                        <h2>Total Groups</h2>
+                        <div class="value loading" id="groupCount">0</div>
+                    </div>
+                    <div class="card">
+                        <h2>Uptime</h2>
+                        <div class="value loading" id="uptime">Loading...</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section">
+                <h2 class="section-title">System Information</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h2>OS</h2>
+                        <div class="value loading" id="os">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h2>RAM Usage</h2>
+                        <div class="value loading" id="ramUsage">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h2>Ping</h2>
+                        <div class="value loading" id="ping">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h2>Server Time</h2>
+                        <div class="value loading" id="serverTime">Loading...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2023 - 2024 Ajiro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+
+        function updateDashboard(data) {
+            Object.keys(data).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = key === 'botUsername' ? `@${data[key]}` : data[key];
+                    element.classList.remove('loading');
+                }
+            });
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('currentDateTime').textContent = now.toLocaleString();
+        }
+
+        socket.on('dashboardUpdate', updateDashboard);
+
+        socket.emit('requestDashboardData');
+
+        setInterval(updateDateTime, 1000);
+
+        updateDateTime();
+    </script>
+</body>
+</html>

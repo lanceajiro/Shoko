@@ -1,5 +1,4 @@
 const path = require('path');
-const authorization = require('./system/authorization');
 
 // Define paths
 const aiPath = path.join(__dirname, 'system', 'ai.js');
@@ -33,16 +32,8 @@ exports.listen = async function({ bot, chatId, userId, msg, data }) {
     // If the AI lock is active, prevent any AI responses
     if (global.client.restrictAi) return; // Exit early to prevent AI interference during bot.once processes
 
-    // Check if the user is registered
-    const isRegistered = global.data.users.has(userId.toString());
-
     // Check if the message is a command (starts with '/')
     if (text?.startsWith('/')) {
-        // If the user is not registered, send the authorization request and return
-        if (!isRegistered) {
-            authorization.request(bot, chatId, userId);
-            return;
-        }
 
         const args = text.slice(1).split(' ');
         const commandName = args.shift().toLowerCase();
@@ -104,13 +95,3 @@ exports.listen = async function({ bot, chatId, userId, msg, data }) {
     // If we reach here, it means the message was not a command and didn't trigger AI response
     // We don't need to do anything for unregistered users at this point
 };
-
-// Set up the callback query handler for authorization
-const bot = global.client.bot;
-bot.on('callback_query', async (callbackQuery) => {
-    try {
-        await authorization.response(bot, callbackQuery);
-    } catch (error) {
-        console.error('Error handling callback query:', error);
-    }
-});

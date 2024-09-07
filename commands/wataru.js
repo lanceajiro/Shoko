@@ -24,7 +24,7 @@ exports.initialize = async function ({ bot, chatId, msg, args, usages }) {
             "Cookie": "YOUR COOKIE",
             "Content-Type": "application/json",
             "Origin": "https://www.blackbox.ia",
-            "Referer": "https://www.blackbox.ia/agent/IanYQ3mknU",
+            "Referer": "https://www.blackbox.ai/agent/Wataru0irSTue",
             "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36"
         };
         const config = {
